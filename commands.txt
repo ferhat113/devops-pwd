@@ -1,5 +1,3 @@
-on manager, run this:
-docker network create --driver overlay --attachable jenkins
 
 ##################################################################
 

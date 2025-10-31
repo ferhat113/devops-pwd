@@ -1,0 +1,24 @@
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DB_TYPE=sqlite3
+      - ROOT_URL=http://gitea:3000
+    volumes:
+      - ./gitea-data:/data
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    restart: always
+    networks:
+      - gitea 
+
+networks:
+  gitea:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/16
