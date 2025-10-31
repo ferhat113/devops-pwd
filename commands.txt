@@ -1,0 +1,12 @@
+on manager, run this:
+docker network create --driver overlay --attachable jenkins
+
+##################################################################
+
+docker exec my-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+ip -4 -o addr show eth0 | awk '{print $4}' | cut -d/ -f1
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -q)
+
+

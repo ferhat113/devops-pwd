@@ -1,0 +1,21 @@
+services:
+  tomcat:
+    image: ferhatchibane/tomcat
+    container_name: my-tomcat
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    volumes:
+      - tomcat-data:/usr/local/tomcat/webapps
+      - tomcat-logs:/usr/local/tomcat/logs
+    networks:
+      - jenkins
+
+networks:
+  jenkins:
+    external: true
+
+volumes:
+  tomcat-data:
+  tomcat-logs:
+
